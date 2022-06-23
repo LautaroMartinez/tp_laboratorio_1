@@ -51,7 +51,7 @@ int main(void) {
                     do {
                         switch(fileMenu()) {
                             case 1: 
-                                loadFromText(passengerList, "data");
+                                loadFromText(passengerList, "data.csv");
                                 load_file_loop_menu = 0;
                                 break;
                             case 2: 
@@ -78,7 +78,7 @@ int main(void) {
                 do {
                     switch(fileMenu()) {
                         case 1: 
-                            saveAsText(passengerList, "data");
+                            saveAsText(passengerList, "data.csv");
                             save_file_loop_menu = 0;
                             break;
                         case 2: 

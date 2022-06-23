@@ -29,5 +29,5 @@ char* get_name(Passenger* this);
 char* get_last_name(Passenger* this);
 float get_price(Passenger* this);
 char* get_flight_code(Passenger* this);
-int   get_passenger_type(Passenger* this);
-int   get_flight_status(Passenger* this);
+char* get_passenger_type(Passenger* this);
+char* get_flight_status(Passenger* this);

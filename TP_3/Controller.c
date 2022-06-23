@@ -25,8 +25,8 @@ void addPassengers(LinkedList* passengerList, int *globalId) {
     getString(last_name, 21, "Ingrese el Apellido: ", "");
     price = getFloat(0, 10000, "Ingrese el Precio: ", "");
     getString(flight_code, 7, "Ingrese el Codigo de Vuelo: ", "");
-    passenger_type = getNumber(0, 10, "Ingrese el Tipo de Pasajero: ", "");
-    flight_status = getNumber(0, 1000, "Ingrese el Status: ", "");
+    passenger_type = getNumber(1, 3, "Ingrese el Tipo de Pasajero (1-FirstClass, 2-ExecutiveClass, 3-EconomyClass): ", "");
+    flight_status = getNumber(1, 4, "Ingrese el Status (1-Aterrizado, 2-En Horario, 3-En Vuelo, 4-Demorado): ", "");
     (*globalId)++;
 
     set_id(newPassenger, id);
@@ -73,11 +73,11 @@ void modifyPassenger(LinkedList* passengerList){
                     set_flight_code(foundPassenger, flight_code);
                     break;
                 case 5: ;
-                    passenger_type = getNumber(0, 10, "Ingrese el Tipo de Pasajero: ", "");
+                    passenger_type = getNumber(0, 10, "Ingrese el Tipo de Pasajero (1-FirstClass, 2-ExecutiveClass, 3-EconomyClass): ", "");
                     set_passenger_type(foundPassenger, passenger_type);
                     break;
                 case 6: ;
-                    flight_status = getNumber(0, 1000, "Ingrese el Status: ", "");
+                    flight_status = getNumber(0, 1000, "Ingrese el Status (1-Aterrizado, 2-En Horario, 3-En Vuelo, 4-Demorado): ", "");
                     set_flight_status(foundPassenger, flight_status);
                     break;
                 case 7:
@@ -113,7 +113,7 @@ void listPassenger(LinkedList* passengerList) {
         printf("**** Pasajeros por Nombre, Apellido y Tipo: ****\n");
         for(int i = 0; i < len; i++) {
             auxPassenger = ll_get(passengerList, i);
-            printf("- %s %s, %i\n", get_name(auxPassenger), get_last_name(auxPassenger), get_passenger_type(auxPassenger));
+            printf("- %s %s, %s\n", get_name(auxPassenger), get_last_name(auxPassenger), get_passenger_type(auxPassenger));
         }
         printf("**** Fin ****\n");
     }
@@ -213,8 +213,8 @@ void saveAsText(LinkedList* passengerList, char* path) {
     char last_name[21];
     float price;
     char flight_code[7];
-    int passenger_type;
-    int flight_status;
+    char passenger_type[21];
+    char flight_status[21];
     int len;
 
     file = fopen(path, "w");
@@ -231,10 +231,10 @@ void saveAsText(LinkedList* passengerList, char* path) {
             strcpy(last_name, get_last_name(auxPassenger));
             price = get_price(auxPassenger);
             strcpy(flight_code, get_flight_code(auxPassenger));
-            passenger_type = get_passenger_type(auxPassenger);
-            flight_status = get_flight_status(auxPassenger);
+            strcpy(passenger_type, get_passenger_type(auxPassenger));
+            strcpy(flight_status, get_flight_status(auxPassenger));
 
-            fprintf(file,"%d,%s,%s,%f,%s,%d,%d\n", 
+            fprintf(file,"%d,%s,%s,%f,%s,%s,%s\n", 
                 id, name, last_name, price, flight_code, passenger_type, flight_status);
         }
         printf("Se guardo el archivo correctamente\n");

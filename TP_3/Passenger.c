@@ -70,10 +70,39 @@ char* get_flight_code(Passenger* passenger) {
     return passenger->flight_code;
 }
 
-int get_passenger_type(Passenger* passenger) {
-    return passenger->passenger_type;
+char* get_passenger_type(Passenger* passenger) {
+    switch(passenger->passenger_type) {
+        case 1: 
+            return "FirstClass";
+            break;
+        case 2: 
+            return "ExecutiveClass";
+            break;
+        case 3:
+            return "EconomyClass";
+            break;
+        default:
+            return "Error";
+            break;
+    }
 }
 
-int get_flight_status(Passenger* passenger) {
-    return passenger->flight_status;
+char* get_flight_status(Passenger* passenger) {
+    switch(passenger->flight_status) {
+        case 1: 
+            return "Aterrizado";
+            break;
+        case 2: 
+            return "En Horario";
+            break;
+        case 3:
+            return "En Vuelo";
+            break;
+        case 4:
+            return "Demorado";
+            break;
+        default:
+            return "Error";
+            break;
+    }
 }
