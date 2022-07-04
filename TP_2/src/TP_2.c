@@ -33,7 +33,6 @@ int main(void) {
                 }
                 break;
             case 2: ;
-                passengerList[0].is_empty = 0;
                 any_index = getNotEmptyPassengerIndex(passengerList, LEN);
                 if(any_index != -1) {
                     modifyPassenger(passengerList,LEN);
@@ -51,7 +50,7 @@ int main(void) {
                     system("pause");
                 }
                 break;
-            case 4:
+            case 4: ;
                 any_index = getNotEmptyPassengerIndex(passengerList, LEN);
                 if(any_index != -1) {
                     showPassengers(passengerList, LEN);
@@ -60,7 +59,7 @@ int main(void) {
                     system("pause");
                 }
                 break;
-            case 5:
+            case 5: ;
                 empty_index = getEmptyPassengerIndex(passengerList, LEN);
                 if(any_index != -1) {
                     mockPassengers(passengerList, LEN, &global_id);

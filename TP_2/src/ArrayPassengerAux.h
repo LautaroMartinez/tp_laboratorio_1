@@ -19,3 +19,7 @@ int reportsMenu();
 int findPassengerById(Passenger passengerList[], int len);
 void sortPassengers(Passenger passengerList[], int len, int order);
 void sortPassengersByCode(Passenger passengerList[], int len, int order);
+void informPricePercentage(Passenger passengerList[], int len);
+
+void getPassengerTypeName(int passenger_type, char passengerTypeName[]);
+void getFlightStatusName(int flight_status, char flightStatusName[]);

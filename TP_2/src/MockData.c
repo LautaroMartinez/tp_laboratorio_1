@@ -58,32 +58,6 @@ char flightCodeMockArray[10][7] = {
     "IaClpo"
 };
 
-int statusMockArray[10] = {
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9
-};
-
-int passengerTypeMockArray[10] = {
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9
-};
-
 int checkQtyAvailable(Passenger passengerList[], int len, int qty) {
     int emptyCounter = 0;
     int i = 0;
@@ -112,8 +86,8 @@ void mockPassengers(Passenger passengerList[], int len, int* globalId){
             strcpy(passengerList[i].last_name, lastNameMockArray[rand() % 10]);
             passengerList[i].price = priceMockArray[rand() % 10];
             strcpy(passengerList[i].flight_code, flightCodeMockArray[rand() % 10]);
-            passengerList[i].flight_status = statusMockArray[rand() % 10];
-            passengerList[i].passenger_type = passengerTypeMockArray[rand() % 10];
+            passengerList[i].flight_status = (rand() % 3) + 1;
+            passengerList[i].passenger_type = (rand() % 2) + 1;
             passengerList[i].is_empty = 0;
             (*globalId)++;
         }

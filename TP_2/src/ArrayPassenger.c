@@ -18,8 +18,8 @@ void addPassengers(Passenger *passenger, int *globalId) {
     getString(passenger->last_name, 51, "Ingrese el Apellido: ", "");
     passenger->price = getFloat(0, 10000, "Ingrese el Precio: ", "");
     getString(passenger->flight_code, 10, "Ingrese el Codigo de Vuelo: ", "");
-    passenger->passenger_type = getNumber(0, 10, "Ingrese el Tipo de Pasajero: ", "");
-    passenger->flight_status = getNumber(0, 1000, "Ingrese el Status: ", "");
+    passenger->passenger_type = getNumber(1, 3, "Ingrese el Tipo de Pasajero (1-FirstClass, 2-ExecutiveClass, 3-EconomyClass): ", "");
+    passenger->flight_status = getNumber(1, 4, "Ingrese el Status (1-Aterrizado, 2-En Horario, 3-En Vuelo, 4-Demorado): ", "");
     passenger->is_empty = 0;
     (*globalId)++;
 
@@ -28,8 +28,17 @@ void addPassengers(Passenger *passenger, int *globalId) {
 }
 
 void modifyPassenger(Passenger passengerList[], int len){
+	int loop_menu = 1;
+
+	printf("**** Pasajeros: ****\n");
+	printf("ID - Apellido, Nombre\n");
+    for(int i = 0; i < len; i++) {
+        if (passengerList[i].is_empty == 0) {
+            printf("%i - %s, %s\n", passengerList[i].id, passengerList[i].last_name, passengerList[i].name);
+        }
+    }
+
     int passagerIndex = findPassengerById(passengerList, len);
-    int loop_menu = 1;
 
     if (passagerIndex != -1) {
         do {
@@ -69,7 +78,16 @@ void modifyPassenger(Passenger passengerList[], int len){
 }
 
 void removePassenger(Passenger passengerList[], int len){
+	printf("**** Pasajeros: ****\n");
+	printf("ID - Apellido, Nombre\n");
+    for(int i = 0; i < len; i++) {
+        if (passengerList[i].is_empty == 0) {
+            printf("%i - %s, %s\n", passengerList[i].id, passengerList[i].last_name, passengerList[i].name);
+        }
+    }
+
     int passagerIndex = findPassengerById(passengerList, len);
+
     if (passagerIndex != 1) {
         passengerList[passagerIndex].is_empty = 1;
         printf("Pasajero -%s %s- dado de baja con exito\n", 
@@ -97,7 +115,10 @@ void showPassengers(Passenger passengerList[], int len) {
             case 4: ;
                 sortPassengersByCode(passengerList, len, 0);
                 break;
-            case 5:
+            case 5: ;
+            	informPricePercentage(passengerList, len);
+                break;
+            case 6:
                 printf("Volviendo a Menu\n");
                 system("pause");
                 loop_menu = 0;
